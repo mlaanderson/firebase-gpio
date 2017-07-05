@@ -1,0 +1,27 @@
+{
+  "name": "firebase-gpio",
+  "version": "0.0.1",
+  "description": "Controls the Raspberry Pi GPIO from Firebase",
+  "main": "gpio.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlaanderson/firebase-gpio.git"
+  },
+  "keywords": [
+    "firebase",
+    "gpio"
+  ],
+  "author": "Michael Anderson <manderson@amesburytruth.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mlaanderson/firebase-gpio/issues"
+  },
+  "homepage": "https://github.com/mlaanderson/firebase-gpio#readme",
+  "dependencies": {
+    "firebase": "^4.1.3",
+    "onoff": "^1.1.3"
+  }
+}
