@@ -49,8 +49,6 @@ class Gpio {
             value: 0
         }, data);
 
-        console.log(data);
-
         if (gpio.pin == null) {
             gpio.pin = new onoff.Gpio(snapshot.key, data.direction, data.edge);
         }
@@ -62,9 +60,13 @@ class Gpio {
             gpio.pin.setEdge("none");
         }
 
+        if (gpio.pin.direction() != data.direction) {
+            gpio.pin.setDirection(data.direction);
+        }
+
         if (data.direction == "out") {
             // write the value
-            gpio.pin.write(data.value);
+            gpio.pin.writeSync(data.value);
         } else if ((data.direction == "in") && (gpio.watcher == null) && (data.edge != 'none')) {
             // setup a watcher
             gpio.watcher = this._pinWatchHandler.bind(gpio);
