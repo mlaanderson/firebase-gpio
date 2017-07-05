@@ -55,10 +55,11 @@ class Gpio {
             gpio.pin = new onoff.Gpio(snapshot.key, data.direction, data.edge);
         }
 
-        if ((gpio.watcher != null) && (data.edge != 'none')) {
+        if ((gpio.watcher != null) && (data.edge == 'none')) {
             // remove the watcher
             gpio.pin.unwatch(gpio.watcher);
             gpio.watcher = null;
+            gpio.pin.setEdge("none");
         }
 
         if (data.direction == "out") {
@@ -67,6 +68,7 @@ class Gpio {
         } else if ((data.direction == "in") && (gpio.watcher == null) && (data.edge != 'none')) {
             // setup a watcher
             gpio.watcher = this._pinWatchHandler.bind(gpio);
+            gpio.pin.setEdge(data.edge);
             gpio.pin.watch(gpio.watcher);
 
             // read the current pin state
